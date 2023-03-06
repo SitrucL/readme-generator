@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "es6",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "noImplicitAny": true,
+    "esModuleInterop": true,
+    "lib": ["es2020"],
+    "strict": true,
+    "sourceMap": true,
+
+    "outDir": "dist"
+  },
+  "ts-node": {
+    // Tell ts-node CLI to install the --loader automatically
+    "esm": true
+  },
+
+  "include": ["./**/*.ts"],
+  "exclude": ["node_modules"]
+}
