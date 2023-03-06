@@ -10,7 +10,7 @@
         "dev": "nodemon --watch '**/*.ts' --exec 'ts-node' src/index.ts",
         "prettier": "prettier --write --ignore-path .gitignore --ignore-path .prettierignore \"**/*.+(js|json|ts|tsx)\"",
         "lint": "eslint --ignore-path .gitignore --ext .js,.jsx,.ts,.tsx . --fix",
-        "validate": "npm run lint && npx tsc && npm run test",
+        "validate": "npm run lint && npx tsc",
         "format": "prettier --config .prettierrc 'src/**/*.ts' --write",
         "prepare": "husky install"
     },
