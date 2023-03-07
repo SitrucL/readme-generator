@@ -1,44 +1,19 @@
-# Project Title
+# WIP - README.md Generator
 
-This project is a TypeScript application that does...
+## Setup and installation
 
-## Installation
+-   Clone and install this repo
 
-To install the necessary dependencies, run the following command:
+-   You'll need to create a `.env` file and add `OPENAI_KEY` to it
 
-```
-npm install
-```
+-   You'll aslo need to edit `line 5` of `index.ts` with the path to this repo's `.env`
 
-## Running the Application
+## Usage
 
-To run the application, use the following command:
+In your terminal, navigate to a repo that you want to create a README.md for and then run the `index.ts` file using `ts-node` like so :
 
 ```
-npm start
+ts-node ~/GENERTIC_DIRECTORY/readme-bot/src/index.ts
 ```
 
-## Testing
-
-To run the tests, use the following command:
-
-```
-npm test
-```
-
-## Additional Scripts
-
-There are additional scripts available in the package.json file. These include:
-
-- `build`: Builds the application for production.
-- `lint`: Runs ESLint to check for code quality issues.
-- `format`: Formats the code using Prettier.
-
-## Environment Variables
-
-The following environment variables need to be set:
-
-- `ENV_VAR_1`: Description of environment variable 1.
-- `ENV_VAR_2`: Description of environment variable 2.
-
-Make sure to add these environment variables to a `.env` file in the root directory of the project.
+(Creating an alias or function within your .zshrc or equaivalent is advised)
