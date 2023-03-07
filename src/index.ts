@@ -10,11 +10,16 @@ const config = new Configuration({
 });
 const currentDir = process.cwd();
 
+const packageJSONInfo = JSON.parse(fs.readFileSync(`${currentDir}/package.json`, "utf8"));
+// console.log("packageJSONInfo: ", packageJSONInfo.scripts);
+
 const rootFiles = fs.readdirSync(`${currentDir}/`).join(" ");
 const srcFiles = fs.readdirSync(`${currentDir}/src`).join(" /src/");
+
 export const generateREADME = async () => {
     try {
-        const allFiles = rootFiles.concat(srcFiles);
+        const allFiles = rootFiles.concat(srcFiles, " ");
+        const scripts = JSON.stringify(packageJSONInfo.scripts);
 
         const openai = new OpenAIApi(config);
         const response = await openai.createChatCompletion({
@@ -22,7 +27,7 @@ export const generateREADME = async () => {
             messages: [
                 {
                     role: "user",
-                    content: `Generate me a readme file in markdown based on the given list of file names ${allFiles}. You should be able to, create a title & description of what the project does, generate instructions for installation, running testing and have mention of any additional scripts in the package json. Should also mention any .env keys the user needs to add. Do not use the file names in the README just use them to make an assumption on what the project is. `
+                    content: `Generate me a readme file in markdown based on the given list of file names ${allFiles}. You should be able to, create a title & description of what the project does, generate instructions for installation, running testing and have mention of any additional scripts in the package json: ${scripts}. Should also mention any .env keys the user needs to add. Do not use the file names in the README just use them to make an assumption on what the project is. `
                 }
             ],
             temperature: 0,
@@ -47,7 +52,6 @@ const generatedREADME = await generateREADME();
 
 if (!generatedREADME) throw new Error("no README generated");
 
-console.log("currentDir: ", currentDir);
 fs.writeFile(`${currentDir}/README.md`, generatedREADME, function (err) {
     if (err) throw err;
     console.log("File is created successfully.");
