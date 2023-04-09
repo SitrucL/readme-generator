@@ -77,9 +77,7 @@ The project also includes several additional scripts to help maintain code quali
 
 ## Environment Variables
 
-To configure the application, you may need to add the following environment variables to a `.env` file in the project root:
-
--   `KEY_NAME`: Description of the key's purpose.
+You'll need to create a `.env` using the `.env.example` file and add your `OPENAI_KEY` to it
 
 ## Contributing
 
